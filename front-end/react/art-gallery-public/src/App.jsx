@@ -17,6 +17,8 @@ function App() {
     let response = await fetch('http://localhost:8080/api/artworks');
     let data = await response.json();
 
+    console.log(data);
+
     data.forEach(obj => {
       let artist = new Artist(obj.artist.id, obj.artist.firstName, obj.artist.lastName, obj.artist.location);
       let styles = [];
@@ -49,6 +51,7 @@ function App() {
         <Route path="/" element={ <Artworks artworks={allArtworks} /> } />
         <Route path="/artworks" element={ <Artworks artworks={allArtworks} /> } />
         <Route path="artworks/:id" element={ <Details artworks={allArtworks} /> } />
+        {/* <Route path="artworks/*" element={<Navigate to="/" />} /> */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>}
     </React.StrictMode>

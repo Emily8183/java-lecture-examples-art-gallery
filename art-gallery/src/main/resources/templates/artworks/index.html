@@ -26,6 +26,7 @@
                 <th>ID</th>
                 <th>Title</th>
                 <th>Artist</th>
+                <th>Style</th>
                 <th>Year Created</th>
                 <th>Image</th>
             </tr>
@@ -34,10 +35,11 @@
                 <td th:text="${artwork.id}"></td>
                 <td><a th:href="${'/artworks/details/' + artwork.id}" th:text="${artwork.title}"></a></td>
                 <td th:text="${artwork.artist}"></td>
+                <td th:text="${artwork.getFormattedStyles()}"></td>
                 <td th:text="${artwork.details.yearCreated}"></td>
                 <td>
                     <a th:href="${'/artworks/details/' + artwork.id}" target="_blank">
-                        <img th:src="${'https://drive.google.com/thumbnail?id=' + artwork.details.imageId}" width="50px" />
+                        <img th:src="${'https://drive.google.com/thumbnail?id=' + artwork.details.imageId + '&sz=w50'}" width="50px" />
                     </a>
                 </td>
             </tr>
