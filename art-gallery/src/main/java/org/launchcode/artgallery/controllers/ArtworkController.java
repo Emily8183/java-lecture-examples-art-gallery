@@ -1,19 +1,14 @@
-package com.launchcode.artgallery.controllers;
+package org.launchcode.artgallery.controllers;
 
-import com.launchcode.artgallery.data.ArtworkRepository;
-import com.launchcode.artgallery.models.Artwork;
-import com.launchcode.artgallery.models.Style;
+import org.launchcode.artgallery.data.ArtworkRepository;
+import org.launchcode.artgallery.models.Artwork;
+import org.launchcode.artgallery.models.Style;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 
 @Controller
 @RequestMapping("/artworks")
