@@ -4,6 +4,7 @@ import org.launchcode.artgallery.data.ArtworksData;
 import org.launchcode.artgallery.models.Artwork;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import java.util.List;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -29,6 +30,7 @@ public class ArtworkController {
     public String processAddArtForm(@ModelAttribute Artwork artwork) {
         ArtworksData.add(artwork);
         return "redirect:/artworks";
+        //增加一个artwork后，ArtworksData为true，因此redirect:/artworks，显示有内容
     }
 
     // Corresponds to http://localhost:8080/artworks/delete
@@ -43,9 +45,14 @@ public class ArtworkController {
     // If the parameter is optional and the client doesn't provide it, can set a default value:  @RequestParam(defaultValue = "Guest")
     // If a request parameter is not always required, set required = false： （@RequestParam(required = false) String query）
     @PostMapping("/delete")
-    public String processDeleteArtForm(@RequestParam(required = false) int[] artworkIds) {
-        for (int id : artworkIds) {
-            ArtworksData.remove(id);
+    public String processDeleteArtForm(@RequestParam(required = false) List<Integer> artworkIds) {
+        // (required = false)，如果用户什么也没有选的话，不会报错
+        // 但是这里仍然会报错，If no checkboxes are selected, Spring does not send artworkIds at all, and since int[] cannot be null, the application throws an error.
+        // so I changed the artworrkIds' type from int[] to List<Integer>
+        if (artworkIds != null && !artworkIds.isEmpty()) {
+            for (int id : artworkIds) {
+                ArtworksData.remove(id);
+            }
         }
         return "redirect:/artworks";
     }

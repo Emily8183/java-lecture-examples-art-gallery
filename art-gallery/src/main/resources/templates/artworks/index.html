@@ -13,6 +13,7 @@
         <h2>ARTWORKS</h2>
 
         <p th:unless="${artworkList} and ${artworkList.size()}">
+<!--  th:unless means "Render this element unless the condition is true."          -->
             <em>No artworks to display.</em>
         </p>
 
