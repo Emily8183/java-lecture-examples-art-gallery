@@ -1,10 +1,12 @@
 /*Class 8:
 概述：
 1）Query Parameter: key-value pair, Path Varialbe: int id => http://localhost:8080/artworks/details/6
-2) Annotation: @Controller, @RequestMapping, @GetMapping, @PostMapping, @ResponseBody
+2) Annotation: @Controller, @RequestMapping, @GetMapping, @PostMapping, @ResponseBody, @RequestParam
 3）form新提交的内容，attribute name需要和query parameter呼应
-4）
- */
+
+*/
+
+//TODO: 首页的artwork collections的显示有问题，因为我把getmapping的Path variable改成了query paremeter。需要修复
 
 package org.launchcode.artgallery.controllers;
 
@@ -13,8 +15,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
-
-// TODO fix bugs
 
 @Controller
 @RequestMapping("/artworks")
@@ -33,8 +33,6 @@ public class ArtworkController {
         put(5, "The Starry Night");
     }};
 
-    // TODO: 2/18/2025  
-
     // Corresponds to http://localhost:8080/artworks
     @GetMapping("")
     public String renderArtworksHomePage() {
@@ -43,7 +41,7 @@ public class ArtworkController {
             String artwork = artworks.get(artworkId);
 //            artworksList.append("<li><a href='/artworks/details/").append(artworkId).append("'>").append(artwork).append("</a></li>");
             artworksList.append(
-                    "<li><a href='/details/artwork=").append(artwork).append("</a></li>"
+                    "<li><a href='/artworks/details/artwork=").append(artwork).append("</a></li>"
             );
         }
 
