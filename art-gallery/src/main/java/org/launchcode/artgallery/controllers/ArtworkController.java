@@ -1,3 +1,8 @@
+/*
+1） Validation, 加到PostMapping
+
+ */
+
 package org.launchcode.artgallery.controllers;
 
 import org.launchcode.artgallery.data.ArtworksData;
@@ -29,6 +34,7 @@ public class ArtworkController {
     }
 
     // Corresponds to http://localhost:8080/artworks/add?title=SomeTitle&artist=SomeArtist
+    //注意新添加了@Valid
     @PostMapping("/add")
     public String processAddArtForm(@ModelAttribute @Valid Artwork artwork, Errors errors, Model model) {
         if (errors.hasErrors()) {

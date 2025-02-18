@@ -13,13 +13,14 @@ public class Artwork {
     private int id;
 
     @NotBlank(message = "Title is required.")
+    //validation dependency provided by gradle
     private String title;
 
     @Size(min = 2, max = 30, message = "Artist's name must be 2-30 characters long.")
     private String artist;
 
     @NotNull(message = "Style is required.")
-    private Style style;
+    private Style style; //added enum
 
     public Artwork() {
         this.id = nextId;
@@ -27,10 +28,10 @@ public class Artwork {
     }
 
     public Artwork(String title, String artist, Style style) {
-        this(); // Call no-arg constructor to set id and increment nextId
+        this(); // Constructor chaining, call the constructor above(the one with no-argu) first, set id, then continue in the following fields
         this.title = title;
         this.artist = artist;
-        this.style = style;
+        this.style = style; //added enum to the constructor
     }
 
     public int getId() {

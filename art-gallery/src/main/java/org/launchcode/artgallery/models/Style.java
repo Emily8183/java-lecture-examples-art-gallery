@@ -1,5 +1,6 @@
 package org.launchcode.artgallery.models;
 
+//Enumeration Type
 public enum Style {
 
     ART_NOUVEAU("Art Nouveau"),
