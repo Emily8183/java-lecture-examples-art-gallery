@@ -13,8 +13,9 @@ import java.util.Objects;
 @Entity
 public class Artwork {
 
-    @Id
+    @Id //so that Hibernate knows it is the primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //so that Hibernate knows that the database should automatically assign an id to the object when it is first saved and to increment one at a time
     private int id;
 
     @NotBlank(message = "Title is required.")
