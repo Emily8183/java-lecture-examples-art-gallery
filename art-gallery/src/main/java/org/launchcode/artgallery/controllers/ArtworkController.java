@@ -24,6 +24,7 @@ public class ArtworkController {
     }
 
     // Corresponds to http://localhost:8080/artworks/add?title=SomeTitle&artist=SomeArtist
+    // The @ModelAttribute annotation allows you to simply receive an object of the class, and Spring Boot automatically pulls in all the individual parameter values and applies them to the object
     @PostMapping("/add")
     public String processAddArtForm(@ModelAttribute Artwork artwork) {
         ArtworksData.add(artwork);
@@ -38,6 +39,9 @@ public class ArtworkController {
     }
 
     // Corresponds to http://localhost:8080/artworks/delete?artworkIds=1&artworkIds=2 (etc)
+    // 这里用到@RequestParam所以“artworkIds=1” 等号的左边是artworkIds
+    // If the parameter is optional and the client doesn't provide it, can set a default value:  @RequestParam(defaultValue = "Guest")
+    // If a request parameter is not always required, set required = false： （@RequestParam(required = false) String query）
     @PostMapping("/delete")
     public String processDeleteArtForm(@RequestParam(required = false) int[] artworkIds) {
         for (int id : artworkIds) {
