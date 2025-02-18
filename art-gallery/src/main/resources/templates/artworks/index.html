@@ -23,6 +23,7 @@
                     </tr>
                 </thead>
                 <tr th:each="artwork : ${artworkList}">
+<!--                    通过model.addAttribute()把artworkList和 ${artworkList}绑定-->
                     <td th:text="${artwork}"></td>
                 </tr>
             </table>

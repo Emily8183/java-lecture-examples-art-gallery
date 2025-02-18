@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1af48bd-7321-4a70-890a-36add0406579" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/art-gallery/src/main/java/org/launchcode/artgallery/controllers/ArtworkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/art-gallery/src/main/java/org/launchcode/artgallery/controllers/ArtworkController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/art-gallery/src/main/resources/templates/artworks/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/art-gallery/src/main/resources/templates/artworks/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
