@@ -1,3 +1,10 @@
+/*
+1) 在Parameter添加Model model
+2）去掉@ResponseBody，因为return的是thymeleaf的templates
+3）addAttribute(variableName, value) to assign a value to the template variable
+
+ */
+
 package org.launchcode.artgallery.controllers;
 
 import org.springframework.stereotype.Controller;
@@ -8,6 +15,7 @@ import java.util.*;
 
 @Controller
 @RequestMapping("/artworks")
+//Do not use the @ResponseBody annotation or the template file name will just appear as text on the page!
 public class ArtworkController {
 
     private static int nextId = 6;
@@ -24,7 +32,7 @@ public class ArtworkController {
     @GetMapping("")
     public String renderArtworksPage(Model model) {
         List<String> artworkList = new ArrayList<>(artworks.values());
-        model.addAttribute("artworkList", artworkList);
+        model.addAttribute("artworkList", artworkList); //.addAttribute(variableName, value) to assign a value to the template variable
         return "artworks/index";
     }
 
