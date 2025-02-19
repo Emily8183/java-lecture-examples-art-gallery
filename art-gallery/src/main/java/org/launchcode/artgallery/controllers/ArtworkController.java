@@ -34,7 +34,7 @@ public class ArtworkController {
                                       @RequestParam(required = false) Integer styleId,
                                       Model model) {
         if (artistId != null) {
-            Optional<Artist> result = artistRepository.findById(artistId);
+            Optional<Artist> result = artistRepository.findById(artistId); //Using a container prevents errors and allows you to handle each situation differently
             if (result.isPresent()) {
                 Artist artist = result.get();
                 model.addAttribute("artist", artist);

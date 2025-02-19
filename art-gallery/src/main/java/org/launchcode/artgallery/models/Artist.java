@@ -19,6 +19,8 @@ public class Artist extends AbstractEntity {
     private String location;
 
     @OneToMany(mappedBy="artist")
+    //mappedBy = "artist" means that the artworks field in Artist is mapped to the artist field in Artwork.
+    //only needs getter, no need setter, hibernate takes care of it
     private final List<Artwork> artworks = new ArrayList<>();
 
     public Artist() {}
