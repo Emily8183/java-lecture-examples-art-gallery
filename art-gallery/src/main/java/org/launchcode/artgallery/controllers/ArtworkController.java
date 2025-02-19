@@ -44,7 +44,7 @@ public class ArtworkController {
     // Corresponds to http://localhost:8080/artworks/add
     @GetMapping("/add")
     public String displayAddArtForm(Model model) {
-        model.addAttribute("artwork", new Artwork());
+        model.addAttribute("artwork", new Artwork()); //本来是artworkData.add()，因为改成了ArtworkRespository, 所以Add an instance of the "one" repository
         model.addAttribute("artists", artistRepository.findAll());
         model.addAttribute("styles", Style.values());
         return "artworks/add";
