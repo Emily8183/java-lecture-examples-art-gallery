@@ -42,16 +42,17 @@ public class ArtworkController {
                 model.addAttribute("artist", artist);
                 model.addAttribute("artworks", artist.getArtworks());
             }
-        } else if (styleId != null) {
-            Optional<Style> result = styleRepository.findById(styleId);
-            if (result.isPresent()) {
-                Style style = result.get();
-                model.addAttribute("styleName", style.getName());
-                model.addAttribute("artworks", style.getArtworks());
-            }
+//        } else if (styleId != null) {
+//            Optional<Style> result = styleRepository.findById(styleId);
+//            if (result.isPresent()) {
+//                Style style = result.get();
+//                model.addAttribute("styleName", style.getName());
+//                model.addAttribute("artworks", style.getArtworks());
+//            } //这段代码好像并没有用
         } else {
             model.addAttribute("artworks", artworkRepository.findAll());
         }
+
         model.addAttribute("loggedIn", session.getAttribute("user") != null);
         return "artworks/index";
     }
@@ -73,11 +74,11 @@ public class ArtworkController {
     // Corresponds to http://localhost:8080/artworks/add
     @GetMapping("/add")
     public String renderAddArtForm(Model model, HttpSession session) {
-        List<Artist> artists = (List<Artist>) artistRepository.findAll();
+        List<Artist> artists = (List<Artist>) artistRepository.findAll();//因为ArtistRepository继承CrudRepository, 直接findAll()返回的值是Iterable<Artist>，所以需要通过cast来转换类型
         artists.sort(new ArtistComparator());
         List<Style> styles = (List<Style>) styleRepository.findAll();
         styles.sort(new StyleComparator());
-        model.addAttribute("artwork", new Artwork());
+        model.addAttribute("artwork", new Artwork()); //创建了新的object
         model.addAttribute("artists", artists);
         model.addAttribute("styles", styles);
         model.addAttribute("loggedIn", session.getAttribute("user") != null);
@@ -92,7 +93,7 @@ public class ArtworkController {
         if (errors.hasErrors()) {
             System.out.println(errors.getAllErrors());
             List<Artist> artists = (List<Artist>) artistRepository.findAll();
-            artists.sort(new ArtistComparator());
+            artists.sort(new ArtistComparator());  //根据comparator参数进行排序
             List<Style> styles = (List<Style>) styleRepository.findAll();
             styles.sort(new StyleComparator());
             model.addAttribute("artists", artists);
