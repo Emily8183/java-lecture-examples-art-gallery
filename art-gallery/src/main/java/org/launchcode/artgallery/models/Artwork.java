@@ -18,10 +18,11 @@ public class Artwork extends AbstractEntity {
     private Artist artist;
 
     @ManyToMany
-    private List<Style> styles;
+    private List<Style> styles; //这里注意不要有final
 
     @OneToOne(cascade = CascadeType.ALL)
-    @Valid
+    //cascade = CascadeType.ALL：比如user和profile他们是@OneToOne relationship， 用了CascadeType.ALL以后，如果我把use删除，profile也会自动删除
+    @Valid //so that Spring knows that it should validate objects within the class
     private ArtworkDetails details;
 
     public Artwork() {}

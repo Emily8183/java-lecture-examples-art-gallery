@@ -18,6 +18,9 @@ public class Artist extends AbstractEntity {
 
     private String location;
 
+    //注意这里只是为了标注mappedBy="artist"所以artwork可以识别到artist这个class
+    //artist的table中并不会出现artworks这个column
+    //所以不需要更新constructor
     @OneToMany(mappedBy="artist")
     private final List<Artwork> artworks = new ArrayList<>();
 

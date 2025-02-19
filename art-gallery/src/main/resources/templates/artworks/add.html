@@ -35,6 +35,7 @@
                     <div class="form-item col-2">
                         <label th:for="yearCreated">Year Created</label>
                         <input th:field="${artwork.details.yearCreated}" />
+<!--    artwork.details因为有cascade attribute，所以可以从artwork.details直接获取artworkDetails的内容                    -->
                         <p class="error" th:errors="${artwork.details.yearCreated}"></p>
                     </div>
                     <div class="form-item col-4">
